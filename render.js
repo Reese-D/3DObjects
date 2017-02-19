@@ -97,6 +97,10 @@ function createObject() {
       obj = new Object(gl, 5, 8, .5, lineFunc, conePointFunc, undefined,
         undefined, [.2,1], 0, 0, 1);
       break;
+    case 2:
+      obj = new Object(gl, 5, 8, 2, ringLineFunc, ringPointFunc, undefined,
+        undefined, [.2,.3], 0, 0, 1);
+    break;
   }
 }
 
