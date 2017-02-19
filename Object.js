@@ -26,6 +26,8 @@ class Object {
 	    for(let p = 0; p < pointSubDiv; p++){
 		for(let dim = 0; dim < 3; dim++){
 		    vertices.push(points[l][p][dim]);
+		}
+		for(let dim = 0; dim < 3; dimm++){
 		    vec3.lerp (randColor, col1, col2, Math.random());
 		    vertices.push(randColor[0], randColor[1], randColor[2]);	
 		}
@@ -55,7 +57,7 @@ class Object {
 	    let idxBuffer = gl.createBuffer();
 	    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuffer);
 	    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(Idx), gl.STATIC_DRAW);
-	    this.indices.push({"primitive": gl.TRIANGLES, "buffer": idxBuffer, "numPoints": Idx.length});
+	    this.indices.push({"primitive": gl.POINTS, "buffer": idxBuffer, "numPoints": Idx.length});
 	}
     }
 
