@@ -6,7 +6,7 @@
 function lineFunc(subDiv, end, x, y, z){
   let line = [];
 
-  for(i=0; i <= subDiv; i++){
+  for(i=0; i < subDiv; i++){
     let array = [];
     // line{point][x,y,z]
     array[0] = end/subDiv * (i * x);
