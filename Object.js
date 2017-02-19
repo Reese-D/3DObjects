@@ -39,23 +39,17 @@ class Object {
 
 	this.indices = [];
 	// initialization (called only one time)
-	for(let l = 0; l < lineSubDiv; l++){
+	for(let l = 0; l < lineSubDiv - 1; l++){
 	    let Idx = [];
 	    for(let p = 0; p < pointSubDiv; p++){
-		let start = l*pointSubDiv;
+		let start = l*pointSubDiv
 		Idx.push(start + p);
-		Idx.push(start + p + 1);
-		Idx.push(start + pointSubDiv + p);
-		if(l > 0){
-		    Idx.push(start + pointSubDiv + p + 1)
-		    Idx.push(start + pointSubDiv + p)
-		    Idx.push(start + p + 1);
-		}
+		Idx.push(start + p + pointSubDiv);
 	    }
 	    let idxBuffer = gl.createBuffer();
 	    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuffer);
 	    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(Idx), gl.STATIC_DRAW);
-	    this.indices.push({"primitive": gl.TRIANGLES, "buffer": idxBuffer, "numPoints": Idx.length});
+	    this.indices.push({"primitive": gl.TRIANGLE_STRIP, "buffer": idxBuffer, "numPoints": Idx.length});
 	}
     }
 
