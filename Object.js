@@ -43,12 +43,12 @@ class Object {
 	    let Idx = [];
 	    for(let p = 0; p < pointSubDiv; p++){
 		let start = l*pointSubDiv;
-		Idx.push(start + p + 1);
 		Idx.push(start + p);
+		Idx.push(start + p + 1);
 		Idx.push(start + pointSubDiv + p);
 		if(l > 0){
-		    Idx.push(start + pointSubDiv + p)
 		    Idx.push(start + pointSubDiv + p + 1)
+		    Idx.push(start + pointSubDiv + p)
 		    Idx.push(start + p + 1);
 		}
 	    }
