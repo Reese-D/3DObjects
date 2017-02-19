@@ -11,52 +11,43 @@ class Cone {
      * @param {vec3}   col1    color #1 to use
      * @param {vec3}   col2    color #2 to use
      */
-    constructor (gl, radius, lineSubDiv, pointSubDiv, height, lineFunc, pointFunc, col1, col2, special, x, y, z) {
+    constructor (gl, radius, lineSubDiv, pointSubDiv, height, lineFunc, pointFunc, col1, col2) {
 
 	/* if colors are undefined, generate random colors */
 	if (typeof col1 === "undefined") col1 = vec3.fromValues(Math.random(), Math.random(), Math.random());
 	if (typeof col2 === "undefined") col2 = vec3.fromValues(Math.random(), Math.random(), Math.random());
 	let randColor = vec3.create();
 	let vertices = [];
-	let line = lineFunc(lineSubDiv, height, x, y, z); //array of x,y,z array
+	let line = lineFunc(lineSubDiv, height); //array of x,y,z array
 	let points = pointFunc(pointSubDiv, line, special);
 	
-	
+	this.vbuff = gl.createBuffer();
 	for(let l = 0; l < lineSubDiv; l++){
 	    for(let p = 0; p < pointSubDiv; p++){
-		for(let dim = 0; dim < 3; dim++){
-		    vertices.push(points[l][p][dim]);
-		    vec3.lerp (randColor, col1, col2, Math.random());
-		    vertices.push(randColor[0], randColor[1], randColor[2]);	
-		}
+		//do here
+		vec3.lerp (randColor, col1, col2, Math.random());
+		vertices.push(randColor[0], randColor[1], randColor[2]);	
 	    }
 	}
-	
-	/* Copy the (x,y,z,r,g,b) sixtuplet into GPU buffer */
-	this.vbuff = gl.createBuffer();
+
+	/* copy the (x,y,z,r,g,b) sixtuplet into GPU buffer */
 	gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuff);
 	gl.bufferData(gl.ARRAY_BUFFER, Float32Array.from(vertices), gl.STATIC_DRAW);
 
-	this.indices = [];
-	// initialization (called only one time)
-	for(let l = 0; l < lineSubDiv; l++){
-	    let Idx = [];
-	    for(let p = 0; p < pointSubDiv; p++){
-		let start = l*pointSubDiv;
-		Idx.push(start + p + 1);
-		Idx.push(start + p);
-		Idx.push(start + pointSubDiv + p);
-		if(l > 0){
-		    Idx.push(start + pointSubDiv + p)
-		    Idx.push(start + pointSubDiv + p + 1)
-		    Idx.push(start + p + 1);
-		}
-	    }
-	    let idxBuffer = gl.createBuffer();
-	    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuffer);
-	    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(Idx), gl.STATIC_DRAW);
-	    this.indices.push({"primitive": gl.TRIANGLES, "buffer": idxBuffer, "numPoints": Idx.length});
-	}
+	// Generate index order for top of cone
+	this.topIdxBuff = gl.createBuffer();
+	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.topIdxBuff);
+	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(topIndex), gl.STATIC_DRAW);
+
+	// Generate index order for bottom of cone
+	this.botIdxBuff = gl.createBuffer();
+	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.botIdxBuff);
+	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(botIndex), gl.STATIC_DRAW);
+
+	/* Put the indices as an array of objects. Each object has three attributes:
+	   primitive, buffer, and numPoints */
+	this.indices = [{"primitive": gl.TRIANGLE_FAN, "buffer": this.topIdxBuff, "numPoints": topIndex.length},
+			{"primitive": gl.TRIANGLE_FAN, "buffer": this.botIdxBuff, "numPoints": botIndex.length}];
     }
 
     /**
@@ -70,6 +61,7 @@ class Cone {
 	/* copy the coordinate frame matrix to the uniform memory in shader */
 	gl.uniformMatrix4fv(modelUniform, false, coordFrame);
 
+	/* binder the (vertex+color) buffer */
 	gl.bindBuffer(gl.ARRAY_BUFFER, this.vbuff);
 
 	/* with the "packed layout"  (x,y,z,r,g,b),
