@@ -41,10 +41,10 @@ class Object {
 	// initialization (called only one time)
 	for(let l = 0; l < lineSubDiv - 1; l++){
 	    let Idx = [];
-	    for(let p = 0; p < pointSubDiv; p++){
+	    for(let p = 0; p <= pointSubDiv; p++){
 		let start = l*pointSubDiv
-		Idx.push(start + p);
-		Idx.push(start + p + pointSubDiv);
+		Idx.push(start + p%pointSubDiv);
+		Idx.push(start + p%pointSubDiv + pointSubDiv);
 	    }
 	    let idxBuffer = gl.createBuffer();
 	    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuffer);
