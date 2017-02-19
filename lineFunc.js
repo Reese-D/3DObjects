@@ -14,6 +14,7 @@ function lineFunc(subDiv, end, x, y, z){
     array[2] = end/subDiv * (i * z);
     line.push(array);
   }
+  
   return line;
 }
 

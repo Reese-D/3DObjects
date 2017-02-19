@@ -95,7 +95,7 @@ function createObject() {
       break;
     case 1:
       obj = new Object(gl, 5, 8, .5, lineFunc, conePointFunc, undefined,
-        undefined, [0,1], 0, 1, 0);
+        undefined, [.5,1], 0, 0, 1);
       break;
   }
 }

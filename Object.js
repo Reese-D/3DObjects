@@ -55,7 +55,7 @@ class Object {
 	    let idxBuffer = gl.createBuffer();
 	    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuffer);
 	    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(Idx), gl.STATIC_DRAW);
-	    this.indices.push({"primitive": gl.TRIANGLES, "buffer": idxBuffer, "numPoints": Idx.length});
+	    this.indices.push({"primitive": gl.POINTS, "buffer": idxBuffer, "numPoints": Idx.length});
 	}
     }
 

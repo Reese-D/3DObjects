@@ -5,15 +5,19 @@
 function conePointFunc(subDiv, line, special){
   // note special = and array of size 2 where the first value is a radius
   // and the second value is a persentage of that radius
-  
-
+   
+  console.log("subDiv: " +  subDiv);
+  console.log("special: " +  special[0] + " and  " + special[1]);
   //circles[circle number][circle points][x,y,z]
   let circles = [];
   for(index=0; index < line.length; index++){
+    console.log(line[index]);
     let circlePoints = [];
     for(i=0; i <= subDiv; i++){
-      radius = special[0];
-      shrink  = radius * index * (special[1] / line.length);
+      let radius = special[0];
+     // shrink  = radius * index * (special[1] / line.length);
+      let shrink = 0;
+      //console.log(shrink);
       let xyz = [];
       //create the points in the circle for circles
       //format: xValues[i] = (centerX + radius * 
@@ -21,11 +25,12 @@ function conePointFunc(subDiv, line, special){
       xyz[0] = (line[index][0] + radius - shrink) *
         Math.cos(2 * Math.PI * i / subDiv); 
       xyz[1] = (line[index][1] + radius  - shrink) *
-        Math.sin(2 * Math.Pi * i / subDiv);
+        Math.cos(2 * Math.PI * i / subDiv);
       xyz[2] =  line[index][2];
       circlePoints.push(xyz);
     }
     circles.push(circlePoints); 
   }
+  console.log(circles);
   return circles;
 }
