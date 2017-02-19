@@ -27,7 +27,7 @@ class Object {
 		for(let dim = 0; dim < 3; dim++){
 		    vertices.push(points[l][p][dim]);
 		}
-		for(let dim = 0; dim < 3; dimm++){
+		for(let dim = 0; dim < 3; dim++){
 		    vec3.lerp (randColor, col1, col2, Math.random());
 		    vertices.push(randColor[0], randColor[1], randColor[2]);	
 		}
