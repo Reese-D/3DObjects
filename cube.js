@@ -52,8 +52,15 @@ function cubePointFunc(subDiv, line, special){
     }
     cubeHolder.push(cubePoints);
   }
-    
-
+  let cubePoints = [];   
+  for(i=1; i < line.length + 1; i++){
+    let xyz = [];
+    xyz[0] = -start;
+    xyz[1] = start + (i * aug);
+    xyz[2] = line[line.length - 1][2];
+    cubePoints.push(xyz);
+  }
+  cubeHolder.push(cubePoints);
 
 
   console.log(cubeHolder);

@@ -103,8 +103,8 @@ function createObject() {
         undefined, [cylinderRadius,shrink], 0, 0, 1, [0,cylinderLineSubDiv-1]);
       break;
     case 2:
-      obj = new Object(gl, 6, 24, .5, lineFunc, cubePointFunc, undefined,
-        undefined, [.2,.3], 0, 0, 1);
+      obj = new Object(gl, 6, 25, .5, lineFunc, cubePointFunc, undefined,
+        undefined, [.2,.3], 0, 0, 1, [0,5]);
     break;
     case 3:
       
