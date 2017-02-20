@@ -16,7 +16,11 @@ function ringLineFunc(subDiv, end, x, y, z){
       line.push(array);
     }
   }
-  
+  let array = [];
+  array[0] = 0;
+  array[1] = 0;
+  array[2] = 0;
+  line.push(array);
   return line;
 }
 
