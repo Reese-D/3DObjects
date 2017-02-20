@@ -108,7 +108,7 @@ function createObject() {
         undefined, [.2,.3], 0, 0, 1);
     break;
     case 3:
-      obj = new Object(gl, 5, 8, 2, ringLineFunc, ringPointFunc, undefined,
+      obj = new Object(gl, 4, 8, 2, ringLineFunc, ringPointFunc, undefined,
         undefined, [.2,.3], 0, 0, 1);
     break;
   }

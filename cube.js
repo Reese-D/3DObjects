@@ -33,12 +33,12 @@ function cubePointFunc(subDiv, line, special){
 
   //note: positive y and x values minus negative y and x values
   //finds the distance between these points on x any y axis
-  let yaug = (cubeHolder[1][1] - cubeHolder[3][1]) /split;
-  let xaug = (cubeHolder[0][0] - cubeHolder[2][0]) /split;
+  let yaug = (cubeHolder[0][0][1] - cubeHolder[0][3][1]) /split;
+  let xaug = (cubeHolder[0][0][0] - cubeHolder[0][2][0]) /split;
   for(i=0; i < split; i++){
     
   }
     
   
-  return cube;
+  return cubeHolder;
 }

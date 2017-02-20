@@ -51,6 +51,6 @@ function ringPointFunc(subDiv, line, special){
     circlePoints.push(xyz);
   }
   circles.push(circlePoints); 
-  console.log(circles);
+  
   return circles;
 }
