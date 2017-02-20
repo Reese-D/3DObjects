@@ -98,6 +98,10 @@ function createObject() {
         undefined, [.2,1], 0, 0, 1);
       break;
     case 2:
+      obj = new Object(gl, 2, 4, 1, lineFunc, cubePointFunc, undefined,
+        undefined, [.2,.3], 0, 0, 1);
+    break;
+    case 3:
       obj = new Object(gl, 5, 8, 2, ringLineFunc, ringPointFunc, undefined,
         undefined, [.2,.3], 0, 0, 1);
     break;
