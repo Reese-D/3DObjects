@@ -60,25 +60,25 @@ class Object {
 	    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(Idx), gl.STATIC_DRAW);
 	    this.indices.push({"primitive": gl.TRIANGLE_STRIP, "buffer": idxBuffer, "numPoints": Idx.length});
 	}
-
-	for(let f = 0; f < fanPoints.length; f++){
-	    let Idx = [];
-	    Idx.push(lineSubDiv*pointSubDiv + fanPoints[f]);
-	    if(f == 0){
-		for(let p = pointSubDiv; p >= 0; p--){
-		    Idx.push(fanPoints[f]*pointSubDiv + p%pointSubDiv);
+	if(typeof fanPoints !== "undefined"){
+	    for(let f = 0; f < fanPoints.length; f++){
+		let Idx = [];
+		Idx.push(lineSubDiv*pointSubDiv + fanPoints[f]);
+		if(f == 0){
+		    for(let p = pointSubDiv; p >= 0; p--){
+			Idx.push(fanPoints[f]*pointSubDiv + p%pointSubDiv);
+		    }
+		}else{
+		    for(let p = 0; p <= pointSubDiv; p++){	
+			Idx.push(fanPoints[f]*pointSubDiv + p%pointSubDiv);
+		    }
 		}
-	    }else{
-		for(let p = 0; p <= pointSubDiv; p++){	
-		    Idx.push(fanPoints[f]*pointSubDiv + p%pointSubDiv);
-		}
+		let idxBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuffer);
+		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(Idx), gl.STATIC_DRAW);
+		this.indices.push({"primitive": gl.TRIANGLE_FAN, "buffer": idxBuffer, "numPoints": Idx.length});
 	    }
-	    let idxBuffer = gl.createBuffer();
-	    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuffer);
-	    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, Uint8Array.from(Idx), gl.STATIC_DRAW);
-	    this.indices.push({"primitive": gl.TRIANGLE_FAN, "buffer": idxBuffer, "numPoints": Idx.length});
 	}
-	console.log(this.indices.length);
     }
 
 
