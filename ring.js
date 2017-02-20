@@ -22,15 +22,15 @@ function ringPointFunc(subDiv, line, special){
       //Math.cos(2 * Math.PI * i/ subDiv)
       if((index % 3) == 0){
         console.log(index);
-        xyz[0] = (line[index][0] + innerRadius) *
+        xyz[0] = (line[index][0] + outerRadius) *
           Math.cos(2 * Math.PI * i / subDiv); 
-        xyz[1] = (line[index][1] + innerRadius) *
+        xyz[1] = (line[index][1] + outerRadius) *
           Math.sin(2 * Math.PI * i / subDiv);
         xyz[2] =  line[index][2];
       }else{ 
-        xyz[0] = (line[index][0] + outerRadius ) *
+        xyz[0] = (line[index][0] + innerRadius ) *
           Math.cos(2 * Math.PI * i / subDiv); 
-        xyz[1] = (line[index][1] + outerRadius) *
+        xyz[1] = (line[index][1] + innerRadius) *
           Math.sin(2 * Math.PI * i / subDiv);
         xyz[2] =  line[index][2];
       } 
@@ -43,14 +43,14 @@ function ringPointFunc(subDiv, line, special){
   let circlePoints = [];
   for(i=0; i < subDiv; i++){
     let xyz = [];
-    xyz[0] = (line[0][0] + innerRadius) *
+    xyz[0] = (line[0][0] + outerRadius) *
       Math.cos(2 * Math.PI * i / subDiv); 
-    xyz[1] = (line[0][1] + innerRadius) *
+    xyz[1] = (line[0][1] + outerRadius) *
       Math.sin(2 * Math.PI * i / subDiv);
     xyz[2] =  line[0][2];
     circlePoints.push(xyz);
   }
   circles.push(circlePoints); 
-  console.log(circles);
+  
   return circles;
 }

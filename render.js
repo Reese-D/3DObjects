@@ -94,6 +94,7 @@ function createObject() {
 	obj = new Cone(gl, radius, height, subDiv);
 	break;
     case 1:
+<<<<<<< HEAD
 	let cylinderHeight = document.getElementById("cylinder-height").valueAsNumber;
 	let cylinderRadius = document.getElementById("cylinder-radius").valueAsNumber;
 	let cylinderLineSubDiv = document.getElementById("cylinder-line-subdivisions").valueAsNumber;
@@ -106,7 +107,7 @@ function createObject() {
 	obj = new Object(gl, 5, 8, 2, ringLineFunc, ringPointFunc, undefined,
 			 undefined, [.2,.3], 0, 0, 1);
 	break;
-    case 5:
+    case 4:
 	obj = new RecursiveSphere(gl, 2, undefined, undefined);
 	break;
     case 6:
