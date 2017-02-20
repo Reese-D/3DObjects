@@ -13,7 +13,7 @@ function conePointFunc(subDiv, line, special){
   for(index=0; index < line.length; index++){
     console.log(line[index]);
     let circlePoints = [];
-    for(i=0; i <= subDiv; i++){
+    for(i=0; i < subDiv; i++){
       let radius = special[0];
      // shrink  = radius * index * (special[1] / line.length);
       let shrink = 0;

@@ -94,8 +94,14 @@ function createObject() {
       obj = new Cone(gl, radius, height, subDiv);
       break;
     case 1:
-      obj = new Object(gl, 5, 8, .5, lineFunc, conePointFunc, undefined,
-        undefined, [.2,1], 0, 0, 1);
+      let cylinderHeight = document.getElementById("cylinder-height").valueAsNumber;
+      let cylinderRadius = document.getElementById("cylinder-radius").valueAsNumber;
+      let cylinderLineSubDiv = document.getElementById("cylinder-line-subdivisions").valueAsNumber;
+      let cylinderPointSubDiv = document.getElementById("cylinder-point-subdivisions").valueAsNumber;
+      let shrink = document.getElementById("cylinder-shrink").valueAsNumber;
+      console.log(cylinderHeight, cylinderRadius, cylinderLineSubDiv, cylinderPointSubDiv, shrink);
+      obj = new Object(gl, cylinderLineSubDiv, cylinderPointSubDiv, cylinderHeight, lineFunc, conePointFunc, undefined,
+        undefined, [cylinderRadius,shrink], 0, 0, 1, [0,cylinderLineSubDiv-1]);
       break;
     case 2:
       obj = new Object(gl, 2, 4, 1, lineFunc, cubePointFunc, undefined,
