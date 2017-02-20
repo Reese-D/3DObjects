@@ -89,12 +89,14 @@ function createObject() {
     case 0:
 	let height = document.getElementById("cone-height").valueAsNumber;
 	let radius = document.getElementById("cone-radius").valueAsNumber;
-	let subDiv = document.getElementById("cone-subdiv").valueAsNumber;
+	let subDiv = document.getElementById("cone-height-subdiv").valueAsNumber;
+	let coneSubDiv = document.getElementById("cone-radius-subdiv").valueAsNumber;
 	console.log ("Cylinder radius: " + radius + " height: " + height + " sub division: " + subDiv);
-	obj = new Cone(gl, radius, height, subDiv);
+	//obj = new Cone(gl, radius, height, subDiv);
+	obj = new Object(gl, subDiv, coneSubDiv, height, lineFunc, conePointFunc, undefined,
+		 undefined, [radius,1], 0, 0, 1, [0,subDiv-1]);
 	break;
     case 1:
-<<<<<<< HEAD
 	let cylinderHeight = document.getElementById("cylinder-height").valueAsNumber;
 	let cylinderRadius = document.getElementById("cylinder-radius").valueAsNumber;
 	let cylinderLineSubDiv = document.getElementById("cylinder-line-subdivisions").valueAsNumber;
@@ -103,21 +105,22 @@ function createObject() {
 	obj = new Object(gl, cylinderLineSubDiv, cylinderPointSubDiv, cylinderHeight, lineFunc, conePointFunc, undefined,
 			 undefined, [cylinderRadius,shrink], 0, 0, 1, [0,cylinderLineSubDiv-1]);
 	break;
-    case 3:
-	obj = new Object(gl, 5, 8, 2, ringLineFunc, ringPointFunc, undefined,
-			 undefined, [.2,.3], 0, 0, 1);
+    case 2:
+	let cubeHeight = document.getElementById("cube-height").valueAsNumber;
+	let cubeSubDiv = document.getElementById("cube-subdivisions").valueAsNumber;
+	obj = new Object(gl, cubeSubDiv, cubeSubDiv*4, cubeHeight, lineFunc, cubePointFunc, undefined,
+			 undefined, [.2,.3], 0, 0, 1,[0,cubeSubDiv-1]);
 	break;
     case 4:
-	obj = new RecursiveSphere(gl, 2, undefined, undefined);
+	let recursiveSphereSubDiv = document.getElementById("recursive-sphere-subdivisions").valueAsNumber;
+	obj = new RecursiveSphere(gl, recursiveSphereSubDiv, undefined, undefined);
 	break;
     case 6:
 	let ringHeight = document.getElementById("ring-height").valueAsNumber;
 	let ringInnerRadius = document.getElementById("ring-inner-radius").valueAsNumber;
 	let ringOuterRadius = document.getElementById("ring-outer-radius").valueAsNumber;
-	let ringLineSubDiv = document.getElementById("ring-line-subdivisions").valueAsNumber;
 	let ringPointSubDiv = document.getElementById("ring-point-subdivisions").valueAsNumber;
-	console.log(ringHeight, ringInnerRadius, ringOuterRadius, ringLineSubDiv, ringPointSubDiv);
-	obj = new Object(gl, ringLineSubDiv, ringPointSubDiv, ringHeight, ringLineFunc, ringPointFunc, undefined,
+	obj = new Object(gl, 5, ringPointSubDiv, ringHeight, ringLineFunc, ringPointFunc, undefined,
 			 undefined, [ringInnerRadius,ringOuterRadius+ringInnerRadius], 0, 0, 1, undefined);
 	break;
     }
