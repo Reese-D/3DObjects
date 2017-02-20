@@ -28,16 +28,17 @@ function cubePointFunc(subDiv, line, special){
     }
     cubeHolder.push(circlePoints);
     console.log(cubeHolder);
+//    console.log(line);
   }
-  let split = special[1];
+  //let split = special[1];
 
   //note: positive y and x values minus negative y and x values
   //finds the distance between these points on x any y axis
-  let yaug = (cubeHolder[0][0][1] - cubeHolder[0][3][1]) /split;
-  let xaug = (cubeHolder[0][0][0] - cubeHolder[0][2][0]) /split;
-  for(i=0; i < split; i++){
+ // let yaug = (cubeHolder[0][0][1] - cubeHolder[0][3][1]) /split;
+ // let xaug = (cubeHolder[0][0][0] - cubeHolder[0][2][0]) /split;
+  //for(i=0; i < split; i++){
     
-  }
+ // }
     
   
   return cubeHolder;

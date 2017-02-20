@@ -102,18 +102,20 @@ function createObject() {
       obj = new Object(gl, cylinderLineSubDiv, cylinderPointSubDiv, cylinderHeight, lineFunc, conePointFunc, undefined,
         undefined, [cylinderRadius,shrink], 0, 0, 1, [0,cylinderLineSubDiv-1]);
       break;
-    case 3:
-      obj = new Object(gl, 5, 8, 2, ringLineFunc, ringPointFunc, undefined,
+    case 2:
+      obj = new Object(gl, 2, 4, 1, lineFunc, cubePointFunc, undefined,
         undefined, [.2,.3], 0, 0, 1);
+    break;
+    case 3:
+      
     break;
     case 6:
       let ringHeight = document.getElementById("ring-height").valueAsNumber;
       let ringInnerRadius = document.getElementById("ring-inner-radius").valueAsNumber;
-      let ringOuterRadius = document.getElementById("ring-outer-radius").valueAsNumber;
-      let ringLineSubDiv = document.getElementById("ring-line-subdivisions").valueAsNumber;
+      let ringOuterRadius = document.getElementById("ring-outer-radius").valueAsNumber; 
       let ringPointSubDiv = document.getElementById("ring-point-subdivisions").valueAsNumber;
-      console.log(ringHeight, ringInnerRadius, ringOuterRadius, ringLineSubDiv, ringPointSubDiv);
-      obj = new Object(gl, ringLineSubDiv, ringPointSubDiv, ringHeight, ringLineFunc, ringPointFunc, undefined,
+      console.log(ringHeight, ringInnerRadius, ringOuterRadius, ringPointSubDiv);
+      obj = new Object(gl, 5, ringPointSubDiv, ringHeight, ringLineFunc, ringPointFunc, undefined,
         undefined, [ringInnerRadius,ringOuterRadius+ringInnerRadius], 0, 0, 1);
       break;
   }
