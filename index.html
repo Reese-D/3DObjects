@@ -49,13 +49,18 @@
     <ul>
       <li>height 0.2 <input id="cone-height" type="range" min="0.2" max="0.9" step="0.05" value="0.5"> 0.9</li>
       <li>radius 0.2 <input id="cone-radius" type="range" min="0.2" max="0.5" step="0.05" value="0.3"> 0.8</li>
-      <li>sub division 6 <input id="cone-subdiv" type="range" min="6" max="30" step="1" value="12"> 30</li>
+      <li>height sub division 6 <input id="cone-height-subdiv" type="range" min="6" max="16" step="1" value="12"> 16</li>
+      <li>sub division 6 <input id="cone-subdiv" type="range" min="6" max="16" step="1" value="12"> 16</li>
       <!-- TODO: add input for vertical subdivision -->
     </ul>
   </div>
   <div class="param-group" hidden>
     Cylinder parameters:
-    <!-- TODO: add your input tags here -->
+    <li>height 0.2 <input id="cylinder-height" type="range" min="0.2" max="0.9" step="0.05" value="0.5"> 0.9</li>
+    <li>radius 0.1 <input id="cylinder-radius" type="range" min="0.1" max="0.45" step="0.025" value="0.3"> 0.45</li>
+    <li>truncation ratio 0.0<input id="cylinder-shrink" type="range" min="0.0" max="1.0" step="0.05"value="0.5"> 1.0</li>
+    <li>height subdivision 6<input id="cylinder-line-subdivisions" type="range" min="6" max="12" step="1" value="12"> 12</li>
+    <li>circle subdivision 6<input id="cylinder-point-subdivisions" type="range" min="6" max="20" step="1" value="12"> 20</li>
   </div>
   <div class="param-group" hidden>
     Cube parameters:
@@ -71,11 +76,17 @@
   </div>
   <div class="param-group" hidden>
     Torus parameters:
-    <!-- TODO: add your input tags here -->
+    <li>primary radius 0.1 <input id="torus-line-radius" type="range" min="0.1" max="0.45" step="0.025" value="0.3"> 0.45</li>
+    <li>secondary radius 0.1 <input id="torus-point-radius" type="range" min="0.1" max="0.45" step="0.025" xovalue="0.3"> 0.45</li>
+    <li>subdivision 6<input id="torus-line-subdivisions" type="range" min="6" max="12" step="1" value="6"> 12</li>
+    <li>width subdivision 6<input id="torus-line-subdivisions" type="range" min="6" max="20" step="1" value="12"> 20</li>
   </div>
   <div class="param-group" hidden>
     Ring parameters:
-    <!-- TODO: add your input tags here -->
+    <li>inner radius 0.1 <input id="ring-inner-radius" type="range" min="0.1" max="0.45" step="0.025" value="0.3"> 0.45</li>
+    <li>outer radius 0.1 <input id="ring-outer-radius" type="range" min="0.1" max="0.45" step="0.025" value="0.3"> 0.45</li>
+    <li>height subdivision 6<input id="ring-line-subdivisions" type="range" min="6" max="12" step="1" value="6"> 12</li>
+    <li>circle subdivision 6<input id="ring-point-subdivisions" type="range" min="6" max="20" step="1" value="12"> 20</li>
   </div>
 
   <label>
