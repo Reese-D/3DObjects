@@ -15,16 +15,17 @@ function conePointFunc(subDiv, line, special){
     let circlePoints = [];
     for(i=0; i < subDiv; i++){
       let radius = special[0];
-     // shrink  = radius * index * (special[1] / line.length);
-      let shrink = 0;
+      let shrink  = (radius * special[1]) / line.length;
+      //let shrink = 0;
       //console.log(shrink);
       let xyz = [];
+  
       //create the points in the circle for circles
       //format: xValues[i] = (centerX + radius * 
       //Math.cos(2 * Math.PI * i/ steps-Math.Pi)
-      xyz[0] = (line[index][0] + radius - shrink) *
+      xyz[0] = (line[index][0] + radius - (shrink * (index + 1))) *
         Math.cos(2 * Math.PI * i / subDiv); 
-      xyz[1] = (line[index][1] + radius  - shrink) *
+      xyz[1] = (line[index][1] + radius  - (shrink * (index + 1))) *
         Math.sin(2 * Math.PI * i / subDiv);
       xyz[2] =  line[index][2];
       circlePoints.push(xyz);
