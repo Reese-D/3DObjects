@@ -1,5 +1,5 @@
 /*
- * Created by Reese & Miles Dewind 01/10/2017
+ * Created by Miles Dewind 01/10/2017
  */
 
 function conePointFunc(subDiv, line, special){
